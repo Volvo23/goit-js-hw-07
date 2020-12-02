@@ -1,18 +1,13 @@
-let inputRef = document.getElementById("validation-input")
-// console.log(inputRef.dataset);
-// console.log(inputRef.dataset.length);
+const inputValidation = document.querySelector('#validation-input');
 
-inputRef.addEventListener('blur', (event) => {
-    let inputLength = event.target.value
-    if (inputRef.dataset.length == inputLength.length) {
-        inputRef.classList.add('green')
-        inputRef.classList.remove('red') 
-        
+inputValidation.addEventListener('blur', onInputValidation);
+
+function onInputValidation() {
+    if (inputValidation.value.length < inputValidation.dataset.length || inputValidation.value.length > inputValidation.dataset.length) {
+        inputValidation.classList.add('invalid');
+        inputValidation.classList.remove('valid');
     } else {
-        inputRef.classList.add('red')
-        inputRef.classList.remove('green') }
-
-
-    // console.log(event.target.value);
-    // console.log('blur');
-})
+        inputValidation.classList.add('valid');
+        inputValidation.classList.remove('invalid');
+    }
+}
